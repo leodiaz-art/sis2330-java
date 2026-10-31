@@ -1,0 +1,23 @@
+# Compilados Java
+*.class
+
+# Maven
+target/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Haskell / Stack
+.stack-work/
+*.hi
+*.o
+dist-newstyle/
+
+# Logs
+*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
