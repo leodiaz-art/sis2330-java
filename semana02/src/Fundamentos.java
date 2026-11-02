@@ -69,5 +69,47 @@ public class Fundamentos {
             contador--;
         }
         System.out.println();
+                // --- Arrays 1D ---
+        int[] notas = {85, 90, 78, 92, 65};
+        System.out.print("Notas: ");
+        for (int n : notas) {
+            System.out.print(n + " ");
+        }
+        System.out.println();
+        System.out.println("Cantidad de notas: " + notas.length);
+
+        // --- Arrays 2D (matriz) ---
+        int[][] matriz = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        System.out.println("Matriz 3x3:");
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        // --- Metodos con sobrecarga ---
+        System.out.println("Promedio del array: " + promedio(notas));
+        System.out.println("Promedio de 5.0 y 7.0: " + promedio(5.0, 7.0));
+        imprimirLinea();
+    }
+    
+    // Promedio de un arreglo de enteros
+    static double promedio(int[] valores) {
+        int suma = 0;
+        for (int v : valores) {
+            suma += v;
+        }
+        return (double) suma / valores.length;
+    }
+
+    // Sobrecarga: mismo nombre, distintos parametros
+    static double promedio(double a, double b) {
+        return (a + b) / 2;
+    }
+
+    // Metodo void: no retorna nada
+    static void imprimirLinea() {
+        System.out.println("------------------");
     }
 }
