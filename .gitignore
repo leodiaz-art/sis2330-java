@@ -21,3 +21,17 @@ dist-newstyle/
 # Sistema operativo
 .DS_Store
 Thumbs.db
+
+# Vaadin / frontend generado
+node_modules/
+**/frontend/generated/
+**/frontend/index.html
+package.json
+package-lock.json
+vite.config.ts
+vite.generated.ts
+tsconfig.json
+types.d.ts
+
+# Maven wrapper del arquetipo
+.mvn/
