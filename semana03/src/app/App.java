@@ -1,5 +1,6 @@
 package app;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import modelo.Tarea;
@@ -14,14 +15,23 @@ public class App {
 
         while (!salir) {
             mostrarMenu();
-            String opcion = sc.nextLine().trim();
+
+            int opcion;
+            try {
+                opcion = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Ingrese un numero valido.");
+                sc.next();
+                continue;
+            }
+            sc.nextLine(); // consume el salto de linea pendiente
 
             switch (opcion) {
-                case "1" -> agregarTarea();
-                case "2" -> listarTareas();
-                case "3" -> completarTarea();
-                case "4" -> eliminarTarea();
-                case "0" -> salir = true;
+                case 1 -> agregarTarea();
+                case 2 -> listarTareas();
+                case 3 -> completarTarea();
+                case 4 -> eliminarTarea();
+                case 0 -> salir = true;
                 default -> System.out.println("Opcion invalida.");
             }
             System.out.println();
@@ -67,6 +77,7 @@ public class App {
 
     private static void completarTarea() {
         int id = leerId();
+        if (id < 0) return;
         if (gestor.completar(id)) {
             System.out.println("Tarea completada.");
         } else {
@@ -76,6 +87,7 @@ public class App {
 
     private static void eliminarTarea() {
         int id = leerId();
+        if (id < 0) return;
         if (gestor.eliminar(id)) {
             System.out.println("Tarea eliminada.");
         } else {
@@ -86,8 +98,12 @@ public class App {
     private static int leerId() {
         System.out.print("ID: ");
         try {
-            return Integer.parseInt(sc.nextLine().trim());
-        } catch (NumberFormatException e) {
+            int id = sc.nextInt();
+            sc.nextLine();
+            return id;
+        } catch (InputMismatchException e) {
+            System.out.println("El ID debe ser un numero.");
+            sc.next();
             return -1;
         }
     }
