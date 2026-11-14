@@ -26,7 +26,7 @@ Contiene los capstones semanales en Java, Vaadin y Haskell.
 
 ## Entorno
 
-- JDK 21
+- JDK 17
 - Maven 3.9
 - Stack (GHC 9.x)
 
