@@ -35,3 +35,6 @@ types.d.ts
 
 # Maven wrapper del arquetipo
 .mvn/
+
+# Datos generados por la aplicacion
+tareas.json
