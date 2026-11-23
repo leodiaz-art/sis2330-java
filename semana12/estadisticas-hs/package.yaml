@@ -35,6 +35,9 @@ ghc-options:
 
 library:
   source-dirs: src
+  exposed-modules:
+  - Lib
+  - Estadisticas
 
 executables:
   estadisticas-hs-exe:
