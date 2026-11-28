@@ -1,7 +1,8 @@
 module Main where
 
 import Test.HUnit
-import Notas (promedio, masAlto, aprobados, parsearLinea)
+import Test.QuickCheck
+import Notas (promedio, masAlto, ordenarPorNota, aprobados, parsearLinea)
 import System.Exit (exitFailure, exitSuccess)
 
 testPromedioSimple :: Test
@@ -47,6 +48,11 @@ todosLosTests = TestList
 main :: IO ()
 main = do
   resultados <- runTestTT todosLosTests
+  putStrLn "Propiedad QuickCheck: ordenar preserva longitud"
+  quickCheck propOrdenarPreservaLongitud
   if errors resultados + failures resultados == 0
     then exitSuccess
     else exitFailure
+
+propOrdenarPreservaLongitud :: [(String, Double)] -> Bool
+propOrdenarPreservaLongitud xs = length (ordenarPorNota xs) == length xs
